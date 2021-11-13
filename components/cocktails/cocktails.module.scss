@@ -1,0 +1,88 @@
+@mixin withIcon {
+  @apply flex justify-start items-center;
+
+  svg {
+    margin-inline-end: 5px;
+  }
+}
+
+@mixin cocktailCard {
+  @apply my-1 rounded-md shadow-lg pb-3 mx-auto cursor-pointer;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  transition: all ease-in-out 0.5s;
+
+  img {
+    @apply rounded-t-md mb-4;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.singleCocktail {
+
+  color: var(--color-text-primary);
+  @apply grid grid-cols-2 gap-1 items-start;
+  max-width: 70%;
+
+  img {
+    height: 350px;
+    @apply mx-auto;
+  }
+
+  .cocktailDetails {
+    h3 {
+      @apply text-2xl font-bold mb-2;
+    }
+
+    h4 {
+      @apply text-xl font-semibold mb-1 mt-3;
+      @include withIcon;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      @apply text-lg font-normal my-1;
+      @include withIcon;
+
+      &.instructions {
+        @apply text-base font-normal mt-2 mb-4;
+        line-height: 1.1;
+      }
+    }
+
+    .ingredients {
+      @apply flex justify-start items-center flex-wrap;
+
+      a {
+        color: var(--color-text-accent);
+        margin-inline-end: 1.5rem;
+        @apply my-2;
+      }
+    }
+  }
+}
+
+.cocktailsList {
+  @apply grid grid-cols-1 gap-5 my-8 mx-auto px-3;
+
+  @screen md {
+    @apply grid-cols-3;
+  }
+
+  @screen lg {
+    @apply grid-cols-4;
+  }
+
+
+  .cocktailCard {
+    @include cocktailCard;
+    -webkit-box-shadow: 0px 1px 11px 2px rgba(var(--shadow-bg-reverse), 0.75);
+    -moz-box-shadow: 0px 1px 11px 2px rgba(var(--shadow-bg-reverse), 0.75);
+    box-shadow: 0px 1px 11px 2px rgba(var(--shadow-bg-reverse), 0.75);
+  }
+
+
+}

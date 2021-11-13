@@ -1,12 +1,21 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
 import SingleCocktail from '../../../components/cocktails/SingleCocktail';
 import MainLayout from '../../../layouts/MainLayout';
+import { CocktailType } from '../../../types/cocktails';
 import { fetchCocktailById } from './../../../apiUtils/Cocktails';
 
-const SingleCocktailPage = ({ cocktail }: any) => {
+interface SingleCocktailPageProps {
+	cocktail: CocktailType;
+}
+const SingleCocktailPage: NextPage<SingleCocktailPageProps> = ({
+	cocktail,
+}) => {
 	return (
-		<MainLayout>
+		<MainLayout
+			title={cocktail?.strDrink}
+			description={cocktail?.strInstructionsDE}
+		>
 			<SingleCocktail cocktail={cocktail} />
 		</MainLayout>
 	);

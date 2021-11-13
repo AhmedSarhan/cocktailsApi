@@ -1,29 +1,24 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
 import {
 	fetchCocktailsBy1stChar,
 	fetchCocktailsByIng,
 } from '../../apiUtils/Cocktails';
-import Link from 'next/link';
 import MainLayout from '../../layouts/MainLayout';
-const CocktailsByIngredient = ({ cocktails }: any) => {
+import CocktailsList from '../../components/cocktails/CocktailsList';
+import { CocktailType } from '../../types/cocktails';
+
+interface CocktailsByIngredientProps {
+	cocktails: CocktailType[];
+	pageTitle: string;
+}
+const CocktailsByIngredient: NextPage<CocktailsByIngredientProps> = ({
+	cocktails,
+	pageTitle,
+}) => {
 	return (
-		<MainLayout>
-			<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 my-8 mx-auto px-3">
-				{cocktails.length > 0 &&
-					cocktails.map((cocktail: any) => (
-						<Link
-							key={cocktail?.idDrink}
-							href={`/cocktails/details/${cocktail?.idDrink}`}
-							passHref
-						>
-							<div className="my-1 rounded-md shadow-lg border border-gray-400 pb-3 mx-auto cursor-pointer">
-								<img src={cocktail?.strDrinkThumb} alt={cocktail?.strDrink} />
-								<h3 className="text-center my-2">{cocktail?.strDrink}</h3>
-							</div>
-						</Link>
-					))}
-			</div>
+		<MainLayout title={pageTitle} description="">
+			{cocktails.length > 0 && <CocktailsList cocktails={cocktails} />}
 		</MainLayout>
 	);
 };
@@ -35,10 +30,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
 	let ingredientName = ctx?.params?.ingredientName;
 	let searchQuery = ctx?.query?.search;
 	if (searchQuery) {
-		cocktails = await fetchCocktailsBy1stChar(searchQuery);
+		let char = searchQuery.length > 1 ? searchQuery[0] : searchQuery;
+		cocktails = await fetchCocktailsBy1stChar(char);
 		return {
 			props: {
 				cocktails: [...cocktails],
+				pageTitle: `Search Results for ${char}`,
 			},
 		};
 	}
@@ -46,6 +43,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
 	return {
 		props: {
 			cocktails: [...cocktails],
+			pageTitle: `Cocktails contains ${ingredientName}`,
 		},
 	};
 };

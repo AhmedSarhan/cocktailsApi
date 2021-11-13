@@ -1,3 +1,25 @@
+.light {
+  --color-bg-primary: rgb(255, 255, 255);
+  --color-bg-secondary: #edf2f7;
+  --color-bg-reverse: rgb(34, 38, 41);
+  --shadow-bg-reverse: 34, 38, 41;
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+  --color-text-accent: #2b6cb0;
+}
+
+.dark {
+  --color-bg-primary: rgb(34, 38, 41);
+  --color-bg-secondary: #071521;
+  --color-bg-reverse: rgb(255, 255, 255);
+  --shadow-bg-reverse: 255, 255, 255;
+  /* --color-bg-primary: #2d3748; */
+  /* --color-bg-secondary: #283141; */
+  --color-text-primary: #f7fafc;
+  --color-text-secondary: #e2e8f0;
+  --color-text-accent: #81e6d9;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,4 +30,17 @@ a {
 
 * {
   box-sizing: border-box;
+  --bg-color-error: #e74c3c;
+}
+
+@layer utilities {
+  .text-error {
+    color: var(--bg-color-error)
+  }
+}
+
+@layer components {
+  .error-text {
+    @apply text-error text-base font-normal;
+  }
 }

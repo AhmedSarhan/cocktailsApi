@@ -26,8 +26,8 @@ export const fetchCocktailsByIng = async (ingredient: string) => {
 
 export const fetchCocktailsBy1stChar = async (searchQuery: string) => {
 	let cocktails: any[] = [];
-	let char = searchQuery.length > 1 ? searchQuery[0] : searchQuery;
-	await Axios.get(`/search.php?f=${char}`)
+
+	await Axios.get(`/search.php?f=${searchQuery}`)
 		.then((res) => {
 			cocktails = [...res?.data?.drinks];
 		})
