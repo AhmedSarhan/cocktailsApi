@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Project Name & Pitch
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Cocktails app**
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+web application that provides user with random cocktails, allows user to view different cocktails based on first character search and different ingredients, user can also view more details about each of those cocktails in a new page
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Installation and Setup Instructions
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Installation:
 
-## Learn More
+`npm install`
 
-To learn more about Next.js, take a look at the following resources:
+To Start Server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`npm run dev`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To Visit App:
 
-## Deploy on Vercel
+`localhost:3000/`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Reflection
+
+This was a 5 days task for Sigbar.
+
+Project goals were:
+
+* Show a random cocktail in the home page with its details.
+
+* Allow user to see other cocktails with the same ingredient of the random cocktail by clicking on them. 
+
+* Allow user to search by the first character of a cocktail
+* Viewing those cocktails in cards the include an image and name of the cocktail
+* User can click on any of those cocktails to view its details in a seperate page
+
+
+## Technologies used and Why
+
+* Next.Js: I used Next.js on top of React.js to take advantage of its main features including the SEO and the server side rendering
+* TypeScript: typescript was used here to make the project strongly typed and to avoid errors in the development process
+* TailwindCss combined with Sass modules: this is my preferred ui combination as tailwind offers great ease in development with its utility classes, nevertheless this ease comes with very long lines of classes which might be repeated. to avoid this I made use of the scss modules and tailwind features i.e: `@apply`, `@layer utilities`, `@layer components`
+
